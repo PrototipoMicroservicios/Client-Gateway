@@ -4,22 +4,9 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 import { PRODUCT_SERVICE,envs } from './config';
 import { ProductsController } from './products/products.controller';
 import { OPTIONAL_DEPS_METADATA } from '@nestjs/common/constants';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
-  controllers: [ProductsController],
-  providers: [],
-  imports: [
-    
-    ClientsModule.register([
-      {
-        name: PRODUCT_SERVICE,
-        transport: Transport.TCP,
-        options: {
-          host: envs.productsMicroserviceHost,
-          port: envs.productsMicrosrvicePort,
-        },
-      },
-    ]),
-  ]
+  imports: [ProductsModule, OrdersModule],
 })
 export class AppModule {}
