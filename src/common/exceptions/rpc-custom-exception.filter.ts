@@ -1,9 +1,4 @@
-import {
-  Catch,
-  ArgumentsHost,
-  ExceptionFilter,
-  HttpException,
-} from '@nestjs/common';
+import {Catch,ArgumentsHost,ExceptionFilter} from '@nestjs/common';
 import { RpcException } from '@nestjs/microservices';
 
 @Catch(RpcException)
@@ -12,13 +7,18 @@ export class RpcCustomExceptionFilter implements ExceptionFilter {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
 
-    const rpcError = exception.getError(); // ✅ Esto está bien si exception es RpcException
+    const rpcError = exception.getError(); 
 
     console.log({ rpcError });
 
-    response.status(401).json({
-      status: 401,
-      message: rpcError || 'PRUEBA',
-    });
+    if ( rpcError.toString().includes('Empty response') ) {
+      return response.status(500).json({
+        status: 500,
+        message: rpcError.toString().substring(0, rpcError.toString().indexOf('(') - 1)
+      })
+    }
+
+
+    
   }
 }

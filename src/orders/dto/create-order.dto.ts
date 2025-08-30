@@ -1,5 +1,4 @@
-import { ArrayMinSize, IsArray, IsBoolean, IsEnum, IsNumber, IsOptional, IsPositive, ValidateNested } from "class-validator";
-import { OrderStatusList } from "../enum/order.enum";
+import { ArrayMinSize, IsArray, ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
 import { OrderItemDto } from "./order-item.dto";
 

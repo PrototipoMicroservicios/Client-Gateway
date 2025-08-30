@@ -8,12 +8,12 @@ async function bootstrap() {
 
   const logger = new Logger('Main-Gateway');
   const app = await NestFactory.create(AppModule);
-  app.setGlobalPrefix('api');
 
+  app.setGlobalPrefix('api');
   app.useGlobalPipes(  
     new ValidationPipe({ 
-  whitelist: true, 
-  forbidNonWhitelisted: true, 
+      whitelist: true, 
+      forbidNonWhitelisted: true, 
     }) 
   );
 
