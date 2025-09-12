@@ -26,6 +26,7 @@ if(error) {
 }
 
 const envVars: EnvVars = value;
+
 export const envs = {
     port: envVars.PORT,
     natsServers: envVars.NATS_SERVERS

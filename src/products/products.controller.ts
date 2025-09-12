@@ -31,16 +31,6 @@ export class ProductsController {
       }),
     );
 
-    // try {
-
-    //   const product = await firstValueFrom(
-    //     this.productsClient.send({ cmd: 'find_one_product' },{ id })
-    //   );
-    //   return product;
-
-    // } catch (error) {
-    //   throw new RpcException(error);
-    // }
   }
 
   @Delete(':id')
